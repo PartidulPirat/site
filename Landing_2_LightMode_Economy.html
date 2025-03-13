@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Pirate Party - Mobilization Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            color: #222;
+            background-color: #f9f9f9;
+        }
+        
+        .hero-mobilization {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1569098644584-210bcd375b59?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        .hero-content {
+            max-width: 650px;
+            color: white;
+        }
+        
+        .movement-tag {
+            display: inline-block;
+            background-color: #8A2BE2;
+            color: white;
+            padding: 8px 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .hero-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2.5rem, 7vw, 3.5rem);
+            line-height: 1.1;
+            margin: 0 0 20px 0;
+        }
+        
+        .hero-subhead {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        
+        .action-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .primary-action {
+            background-color: #E10FD1;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .secondary-action {
+            background-color: transparent;
+            color: white;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 2px solid white;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .countdown {
+            background-color: rgba(0,0,0,0.5);
+            padding: 15px 30px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .countdown-time {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .floating-nav {
+            display: flex;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            flex: 1;
+            padding: 20px 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #444;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        
+        .nav-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .progress-section {
+            padding: 60px 20px;
+            background-color: white;
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .progress-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .stat-box {
+            background-color: #f5f5f5;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            color: #8A2BE2;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #8A2BE2;
+            width: 75%;
+        }
+        
+        @media (max-width: 768px) {
+            .action-bar {
+                flex-direction: column;
+            }
+            
+            .primary-action, .secondary-action {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .countdown {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .floating-nav {
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+            
+            .nav-item {
+                flex: 0 0 auto;
+                padding: 20px 15px;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-mobilization">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="movement-tag">JOIN THE RESISTANCE</span>
+                <h1 class="hero-headline">BREAK THE CORPORATE MONOPOLIES, RESTORE ECONOMIC FREEDOM</h1>
+                <p class="hero-subhead">The fight for a fair digital economy that works for all Europeans is reaching a critical moment. Our campaign against corporate gatekeepers needs your voice now.</p>
+                
+                <div class="action-bar">
+                    <a href="#" class="primary-action">JOIN THE MOVEMENT</a>
+                    <a href="#" class="secondary-action">DONATE €10 MONTHLY</a>
+                    
+                    <div class="countdown">
+                        <div>
+                            <div class="countdown-label">UNTIL PARLIAMENT VOTE</div>
+                            <div class="countdown-time">14 DAYS 08:47:22</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="floating-nav">
+            <a href="#" class="nav-item">About the Bill</a>
+            <a href="#" class="nav-item">Take Action</a>
+            <a href="#" class="nav-item">Volunteer</a>
+            <a href="#" class="nav-item">Donate</a>
+            <a href="#" class="nav-item">Events</a>
+            <a href="#" class="nav-item">Contact MPs</a>
+        </div>
+    </section>
+    
+    <section class="progress-section">
+        <div class="section-container">
+            <h2 class="section-headline">OUR MOVEMENT IS GROWING</h2>
+            
+            <div class="progress-stats">
+                <div class="stat-box">
+                    <div class="stat-number">24,762</div>
+                    <div class="stat-label">SUPPORTERS</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 82%;"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number">€97,540</div>
+                    <div class="stat-label">RAISED</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%;"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number">217</div>
+                    <div class="stat-label">MP MEETINGS</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 43%;"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number">19</div>
+                    <div class="stat-label">DAYS TO ACT</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body></html>

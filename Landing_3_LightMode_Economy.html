@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Pirate Party - Issue Grid Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&amp;family=Nunito:wght@400;700&amp;display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            color: #333;
+            background-color: #f8f8fa;
+        }
+        
+        /* Compact Header */
+        .compact-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-link {
+            color: #555;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        
+        .join-button {
+            background-color: #8A2BE2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        
+        /* Brief Intro */
+        .intro-band {
+            background-color: #8A2BE2;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .intro-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .intro-headline {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 2.2rem;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        /* Main Issue Grid */
+        .issue-grid-section {
+            padding: 60px 20px;
+        }
+        
+        .grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .issues-headline {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .issue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .issue-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .issue-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .issue-icon {
+            height: 120px;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #8A2BE2;
+        }
+        
+        .issue-content {
+            padding: 25px;
+        }
+        
+        .issue-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0 0 10px 0;
+            color: #222;
+        }
+        
+        .issue-description {
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+            color: #555;
+        }
+        
+        .learn-more {
+            color: #8A2BE2;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .learn-more:after {
+            content: "→";
+            margin-left: 5px;
+        }
+        
+        /* Quick Action Band */
+        .action-band {
+            background-color: #00B2D4;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .action-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .action-text {
+            flex: 1;
+        }
+        
+        .action-heading {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            margin: 0 0 15px 0;
+        }
+        
+        .action-description {
+            font-size: 1.1rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .action-primary {
+            background-color: white;
+            color: #00B2D4;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        
+        .action-secondary {
+            background-color: transparent;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid white;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+            
+            .action-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .action-primary, .action-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="compact-header">
+        <div class="header-container">
+            <a href="#" class="logo">EUROPEAN PIRATE PARTY</a>
+            
+            <nav class="header-nav">
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Policies</a>
+                <a href="#" class="nav-link">News</a>
+                <a href="#" class="nav-link">Events</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+            
+            <a href="#" class="join-button">JOIN US</a>
+        </div>
+    </header>
+    
+    <section class="intro-band">
+        <div class="intro-container">
+            <h1 class="intro-headline">CREATING A FAIR DIGITAL ECONOMY FOR EVERYONE</h1>
+            <p class="intro-text">We're fighting for an open society where citizens control technology, not the other way around. Explore our key policy areas below and get involved in the issues that matter most to you.</p>
+        </div>
+    </section>
+    
+    <section class="issue-grid-section">
+        <div class="grid-container">
+            <h2 class="issues-headline">OUR KEY POLICY AREAS</h2>
+            
+            <div class="issue-grid">
+                <div class="issue-card">
+                    <div class="issue-icon">🔐</div>
+                    <div class="issue-content">
+                        <h3 class="issue-title">Digital Privacy</h3>
+                        <p class="issue-description">Protecting personal data from corporate and government surveillance through strong encryption and ownership rights.</p>
+                        <a href="#" class="learn-more">Learn more</a>
+                    </div>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-icon">⚖️</div>
+                    <div class="issue-content">
+                        <h3 class="issue-title">Platform Regulation</h3>
+                        <p class="issue-description">Breaking up digital monopolies and ensuring fair competition in the online marketplace to foster innovation.</p>
+                        <a href="#" class="learn-more">Learn more</a>
+                    </div>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-icon">💰</div>
+                    <div class="issue-content">
+                        <h3 class="issue-title">Universal Basic Income</h3>
+                        <p class="issue-description">Implementing economic security for all citizens to foster entrepreneurship and recognize unpaid work.</p>
+                        <a href="#" class="learn-more">Learn more</a>
+                    </div>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-icon">🔍</div>
+                    <div class="issue-content">
+                        <h3 class="issue-title">Transparent Governance</h3>
+                        <p class="issue-description">Making government operations open to citizens and holding corporations accountable for their political influence.</p>
+                        <a href="#" class="learn-more">Learn more</a>
+                    </div>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-icon">📱</div>
+                    <div class="issue-content">
+                        <h3 class="issue-title">Digital Commons</h3>
+                        <p class="issue-description">Building public digital infrastructure owned by citizens rather than profit-driven corporations.</p>
+                        <a href="#" class="learn-more">Learn more</a>
+                    </div>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-icon">📝</div>
+                    <div class="issue-content">
+                        <h3 class="issue-title">Copyright Reform</h3>
+                        <p class="issue-description">Supporting fair use, reduced copyright terms and expanded public domain to enable creative innovation.</p>
+                        <a href="#" class="learn-more">Learn more</a>
+                    </div>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-icon">💻</div>
+                    <div class="issue-content">
+                        <h3 class="issue-title">Open Source</h3>
+                        <p class="issue-description">Promoting collaborative development and transparent code to break vendor lock-in and foster innovation.</p>
+                        <a href="#" class="learn-more">Learn more</a>
+                    </div>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-icon">🏛️</div>
+                    <div class="issue-content">
+                        <h3 class="issue-title">Tax Justice</h3>
+                        <p class="issue-description">Ensuring tech giants pay their fair share and closing digital economy tax loopholes across Europe.</p>
+                        <a href="#" class="learn-more">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="action-band">
+        <div class="action-container">
+            <div class="action-text">
+                <h2 class="action-heading">JOIN OUR POLICY WORKING GROUPS</h2>
+                <p class="action-description">Help shape our platform by contributing your expertise to any of our policy areas. We need volunteers with both technical and non-technical backgrounds.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="#" class="action-primary">VOLUNTEER</a>
+                <a href="#" class="action-secondary">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+
+
+</body></html>
